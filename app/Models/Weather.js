@@ -9,12 +9,11 @@ export default class Weather {
     }
     get weatherTemplate() {
         return  /*html*/`
-            <div class="col-lg-4 d-flex offset-lg-8">
-                <div>${this.main}</div>
-                <div>${this.description}</div>
-                <div>${this.base}</div>
-                <div>${this.temp}</div>
-                <div>${this.feels_like}</div>
+            <div class="myDIV col-lg-4 offset-8 text-over-image p-3">
+                <h5><div>Condition:  ${this.main}</div></h5>
+                <h5><div>${this.description}</div></h5>
+                <h5><div onclick="app.weatherController.toggleTemp()">Temp: ${this.temp}</div></h5>
+                <h5><div>Feels like: ${this.feels_like}</div></h5>
             </div>
         `
     }

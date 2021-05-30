@@ -14,7 +14,7 @@
 
 <body id="body">
     <header>
-        <nav class="navbar navbar-dark navbar-expand bg-dark text-light">
+        <nav class="navbar navbar-dark navbar-expand T-dark">
             <a class="navbar-brand" href="#">
                 <span class="ml-2">inspire</span>
             </a>
@@ -23,23 +23,31 @@
     <main>
         <div class="container-fluid">
             <div>
-                <div class="row justify-content-center">
-                    <div class="col-12 d-flex flex-wrap space-around">
+                <div class="row">
+                    <div class="col-12 d-flex flex-wrap space-between">
                         <div id="quotes-app" class="col-4">
                             The only thing inportant in life is vision and aim
                         </div>
-                        <div id="time-app" class="col-4">
-                            <H4>Time:</H4>
+
+
+
+                        <div id="blank-app" class="col-4">
+                            <H4> </H4>
                         </div>
-                        <div id="weather-app" class="col-4">
+
+
+
+
+
+                        <div id="weather-app" class="col-4 justify-content-right">
                             <H4>Weather:</H4>
                         </div>
                     </div>
                 </div>
-                <div class="row"></div>
-                <div class="row"></div>
-                <div class="col-12 d-flex flex-wrap">
-                    <div id="todos-app" class="col-4 bg-dark text-light p-5">
+                <div class="row align-items-center"></div>
+                <div class="col-12 d-flex flex-wrap mr-5 my-5">
+
+                    <div id="todos-app" class="col-lg-4 T-dark text-light my-5 rounded">
                         <h5>Todos:</h5>
                         <ul>
                             <li>Lorem ipsum dolor </li>
@@ -47,12 +55,19 @@
                             <li>dolorem delectus beat</li>
                         </ul>
                     </div>
+
+                    <div id="time-app" class="col-4">
+                        <H2>Time:</H2>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
 
     </main>
-    <footer class="container-fluid bg-dark text-light">
+    <footer class="container-fluid T-dark T-dark">
         <div class="row text-center">
             <div class="col">
                 <p><small>Made with love by Codeworks</small></p>

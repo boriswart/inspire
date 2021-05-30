@@ -7,7 +7,7 @@ export default class Quote {
     get quoteTemplate() {
 
         return /*html*/`
-                <div>
+                <div class="my-3">
                    <span
                        class="action p-1 rounded-circle"
                        onclick="app.quotesController.getUpdatedQuote('${this.content}')">

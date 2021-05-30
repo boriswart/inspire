@@ -26,7 +26,8 @@
   --warning: #FF7F50;
   --danger: #EB5757;
   --light: #f8f9fa;
-  --dark: #272727;
+  --dark: #18161680;
+  --darkT: #26232387
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -73,6 +74,11 @@ body {
   color: azure;
   font:   catamaran;
   filter: drop-shadow(3px 11px 3px black);
+}
+
+.T-dark{
+  color: azure;
+  background-color:   #25252a8e
 }
 
 .hide {

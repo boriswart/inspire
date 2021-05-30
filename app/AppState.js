@@ -1,4 +1,7 @@
 import Quote from "./Models/Quote.js"
+import Weather from "./Models/Weather.js"
+
+
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
 
@@ -8,6 +11,8 @@ class AppState extends EventEmitter {
   // @ts-ignore
   quote = null
   //new Quote("Everything is beautifull ... In its on way", "The Association", "Music ASCAP")
+
+  times = new Date()
 
   weather = null
 
