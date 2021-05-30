@@ -10,7 +10,7 @@ function _draw() {
     let strAMPM = "AM"
 
     h > 12 ? h -= 12 : ""
-    h > 12 ? strAMPM = "AM" : strAMPM = "PM"
+    h > 12 ? strAMPM = "PM" : strAMPM = "AM"
 
 
     timeElem.innerHTML = /*html*/`
