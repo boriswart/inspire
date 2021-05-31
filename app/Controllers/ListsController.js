@@ -47,7 +47,7 @@ export default class ListsController {
             numTasks = filteredTasks.length
             completedTasks = filteredTasks.filter(x => x.done == true).length
             template += /*html*/`
-            <div class="col mt-1 T-dark text-center align-content-center">
+            <div class="col mt-1 T-dark text-center align-content-center rounded">
                <div class=" my-1 rounded">
                  <p style="font-size:24px;">Todo:</p>
                  <p style="font-size:14px;">${completedTasks}/${numTasks} </p>
