@@ -78,7 +78,16 @@ body {
 
 .T-dark{
   color: azure;
-  background-color:   #25252a8e
+  background-color:   #25252a8e;
+  vertical-align: middle;
+}
+
+.T-dark.space-between{
+  justify-content:space-between;
+}
+
+.T-dark.space-round{
+  justify-content:space-around;
 }
 
 .hide {
@@ -6270,6 +6279,17 @@ button.bg-dark:focus {
 .d-flex {
   display: flex !important;
 }
+
+.d-flex.space-between {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.d-flex.space-around {
+  display: flex !important;
+  justify-content: space-around;
+}
+
 
 .d-inline-flex {
   display: inline-flex !important;
