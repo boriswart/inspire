@@ -13,22 +13,22 @@ class TasksService {
     }
 
     createTask(name, listId) {
-        console.log("Adding a Task", name)
+        console.log("Service: Adding a Task", name, listId)
         let newTask = new Task(name, false, listId)
         ProxyState.tasks.push(newTask)
         ProxyState.tasks = ProxyState.tasks
     }
 
     deleteTask(taskId) {
-        let keeperTasks = ProxyState.tasks.filter(x => x.taskId !== taskId)
+        let keeperTasks = ProxyState.tasks.filter(x => x.id !== taskId)
         ProxyState.tasks = keeperTasks
         ProxyState.lists = ProxyState.lists
     }
 
     updateTask(taskId, doneChk) {
-        let foundTask = ProxyState.tasks.find(x => x.taskId == taskId)
+        let foundTask = ProxyState.tasks.find(x => x.id == taskId)
         console.log("Updating the Tasks old-way", taskId, doneChk, ProxyState.tasks)
-        foundTask.done ? foundTask.done = false : foundTask.done = true //toggle every click
+        foundTask.completed ? foundTask.completed = false : foundTask.completed = true //toggle every click
         console.log("Updated  Tasks - old-way", foundTask)
         ProxyState.tasks = ProxyState.tasks
     }

@@ -43,9 +43,9 @@ export default class ListsController {
         let template = ''
         ProxyState.lists.forEach(i => {
             console.log("List Draw", i.listId)
-            filteredTasks = ProxyState.tasks.filter(x => x.listId == i.listId)
+            filteredTasks = ProxyState.tasks.filter(x => x.user == i.listId)
             numTasks = filteredTasks.length
-            completedTasks = filteredTasks.filter(x => x.done == true).length
+            completedTasks = filteredTasks.filter(x => x.completed == true).length
             template += /*html*/`
             <div class="col mt-1 T-dark text-center align-content-center rounded">
                <div class=" my-1 rounded">
@@ -58,14 +58,14 @@ export default class ListsController {
                     `
             ProxyState.tasks.forEach(t => {
                 template += /*html*/`
-                        ${t.listId == i.listId ? '<div class="d-flex space-between">' : ""}
-                        ${t.listId == i.listId ? '<div><input type="checkbox" class="checkbox" id="donechk" autocomplete="off" onclick="app.tasksController.updateTask(' : ""}
-                        ${t.listId == i.listId ? "'" + t.taskId + "','" + t.done + "'" + ')"' : ""}
-                        ${t.listId != i.listId ? "" : t.done ? 'checked >' : '>'}
-                        ${t.listId == i.listId ? '<label class="checkbox" for="donechk"></label></div>' : ""}
-                        ${t.listId == i.listId ? '<div><p style="font-size:20px;">' + t.name + '</p></div>' : ""}
-                        ${t.listId == i.listId ? '<div><i class="fa fa-trash" aria-hidden="true" onclick="app.tasksController.removeTask(' : ""}
-                        ${t.listId == i.listId ? "'" + t.taskId + "'" + ')"></i></div></div>' : ""}`
+                        ${t.user == i.listId ? '<div class="d-flex space-between">' : ""}
+                        ${t.user == i.listId ? '<div><input type="checkbox" class="checkbox" id="donechk" autocomplete="off" onclick="app.tasksController.updateTask(' : ""}
+                        ${t.user == i.listId ? "'" + t.id + "','" + t.completed + "'" + ')"' : ""}
+                        ${t.user != i.listId ? "" : t.completed ? 'checked >' : '>'}
+                        ${t.user == i.listId ? '<label class="checkbox" for="donechk"></label></div>' : ""}
+                        ${t.user == i.listId ? '<div><p style="font-size:20px;">' + t.type + '</p></div>' : ""}
+                        ${t.user == i.listId ? '<div><i class="fa fa-trash" aria-hidden="true" onclick="app.tasksController.removeTask(' : ""}
+                        ${t.user == i.listId ? "'" + t.id + "'" + ')"></i></div></div>' : ""}`
             })
 
             template += /*html*/`
