@@ -13,26 +13,6 @@ function celsiusConversion(degreesFahrenheit) {
 
 
 class WeatherService {
-    toggleTemp() {
-        const celsiusConversionConstant = 273.17
-        let tempScaler = ProxyState.weather.tempScale
-        if (tempScaler == 'k') {
-            ProxyState.weather.temp -= celsiusConversionConstant
-            ProxyState.weather.feelsLike -= celsiusConversionConstant
-            ProxyState.weather.tempScale = "c"
-            ProxyState.weather = ProxyState.weather
-        } else if (tempScaler == 'c') {
-            ProxyState.weather.temp = fahrenheitConversion(ProxyState.weather.temp)
-            ProxyState.weather.feelLike = fahrenheitConversion(ProxyState.weather.feelsLike)
-            ProxyState.weather.tempScale = "f"
-            ProxyState.weather = ProxyState.weather
-        } else if (tempScaler == 'f') {
-            ProxyState.weather.temp = celsiusConversion(ProxyState.weather.temp)
-            ProxyState.weather.feelLike = celsiusConversion(ProxyState.weather.feelsLike)
-            ProxyState.weather.tempScale = "c"
-            ProxyState.weather = ProxyState.weather
-        }
-    }
     async getUpdatedWeather() {
         // @ts-ignore
         let res = await axios.get(url + "/weather")
@@ -43,6 +23,26 @@ class WeatherService {
         console.log("Service: Updated get weather", ProxyState.weather)
     }
 
+    toggleTemp() {
+        const celsiusConversionConstant = 273.17
+        let tempScaler = ProxyState.weather.tempScale
+        if (tempScaler == 'k') {
+            ProxyState.weather.temp -= celsiusConversionConstant
+            ProxyState.weather.feelsLike -= celsiusConversionConstant
+            ProxyState.weather.tempScale = "c"
+            ProxyState.weather = ProxyState.weather
+        } else if (tempScaler == 'c') {
+            ProxyState.weather.temp = fahrenheitConversion(ProxyState.weather.temp)
+            ProxyState.weather.feelsLike = fahrenheitConversion(ProxyState.weather.feelsLike)
+            ProxyState.weather.tempScale = "f"
+            ProxyState.weather = ProxyState.weather
+        } else if (tempScaler == 'f') {
+            ProxyState.weather.temp = celsiusConversion(ProxyState.weather.temp)
+            ProxyState.weather.feelsLike = celsiusConversion(ProxyState.weather.feelsLike)
+            ProxyState.weather.tempScale = "c"
+            ProxyState.weather = ProxyState.weather
+        }
+    }
 }
 
 export const weatherService = new WeatherService

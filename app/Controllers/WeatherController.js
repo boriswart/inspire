@@ -1,5 +1,5 @@
 import { ProxyState } from "../AppState.js"
-import Weather from "../Models/Weather.js"
+import  Weather  from "../Models/Weather.js"
 import { weatherService } from "../Services/WeatherService.js"
 
 
@@ -9,7 +9,6 @@ function _draw() {
     if (ProxyState.weather) {
         weatherElem.innerHTML = ProxyState.weather.weatherTemplate
     }
-
 }
 
 //Public

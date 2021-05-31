@@ -15,7 +15,7 @@ class AppState extends EventEmitter {
   //new Quote("Everything is beautifull ... In its on way", "The Association", "Music ASCAP")
 
 
-  /** @type {Weather[]} */
+  /** @type {Weather} */
   weather = null
 
   /** @type string*/

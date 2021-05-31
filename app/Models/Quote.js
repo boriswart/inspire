@@ -5,7 +5,6 @@ export default class Quote {
         this.authorslug = authorSlug
     }
     get quoteTemplate() {
-
         return /*html*/`
                 <div class="my-3">
                    <span
