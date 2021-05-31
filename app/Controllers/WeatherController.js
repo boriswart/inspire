@@ -17,10 +17,14 @@ export default class WeatherController {
     constructor() {
         ProxyState.on("weather", _draw);
         this.getUpdatedWeather()
+        this.toggleTemp()
     }
 
     getUpdatedWeather() {
         weatherService.getUpdatedWeather()
     }
 
+    toggleTemp() {
+        weatherService.toggleTemp(ProxyState.weather.tempScale)
+    }
 }

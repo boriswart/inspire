@@ -3,7 +3,35 @@ import Weather from "../Models/Weather.js"
 
 let url = "https://bcw-sandbox.herokuapp.com/api"
 
+function fahrenheitConversion(degreesCelsius) {
+    return degreesCelsius * 9 / 5 + 32
+}
+
+function celsiusConversion(degreesFahrenheit) {
+    return (degreesFahrenheit - 32) * 5 / 9
+}
+
+
 class WeatherService {
+    toggleTemp(tempScale) {
+        const celsiusConversionConstant = 273.17
+        if (tempScale == 'k') {
+            ProxyState.weather.temp -= celsiusConversionConstant
+            ProxyState.weather.feelsLike -= celsiusConversionConstant
+            ProxyState.weather.tempScale = "c"
+            ProxyState.weather = ProxyState.weather
+        } else if (tempScale == 'c') {
+            ProxyState.weather.temp = fahrenheitConversion(ProxyState.weather.temp)
+            ProxyState.weather.feelLike = fahrenheitConversion(ProxyState.weather.feelsLike)
+            ProxyState.weather.tempScale = "f"
+            ProxyState.weather = ProxyState.weather
+        } else if (tempScale == 'f') {
+            ProxyState.weather.temp = celsiusConversion(ProxyState.weather.temp)
+            ProxyState.weather.feelLike = celsiusConversion(ProxyState.weather.feelsLike)
+            ProxyState.weather.tempScale = "c"
+            ProxyState.weather = ProxyState.weather
+        }
+    }
     async getUpdatedWeather() {
         // @ts-ignore
         let res = await axios.get(url + "/weather")
