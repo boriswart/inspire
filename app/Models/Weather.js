@@ -1,19 +1,19 @@
 export default class Weather {
     constructor(data) {
-        console.log("WEATHER:", data)
         this.main = data.weather[0].main
         this.description = data.weather[0].description
         this.base = data.base
         this.temp = data.main.temp_max
         this.feelsLike = data.main.feels_like
-        this.tempScale = "k"
+        this.tempScale = 'k'
+
     }
     get weatherTemplate() {
         return  /*html*/`
             <div class="myDIV col-lg-4 offset-8 text-over-image p-3">
                 <h5><div>Condition:  ${this.main}</div></h5>
                 <h5><div>${this.description}</div></h5>
-                <h5><div onclick="app.weatherController.toggleTemp()">Temp: ${this.tempScale} + " : " + ${this.temp}</div></h5>
+                <h5><span class="" onclick="app.weatherController.toggleTemp()">Temp: ${this.temp}</span></h5>
                 <h5><div>Feels like: ${this.feelsLike}</div></h5>
             </div>
         `

@@ -13,19 +13,20 @@ function celsiusConversion(degreesFahrenheit) {
 
 
 class WeatherService {
-    toggleTemp(tempScale) {
+    toggleTemp() {
         const celsiusConversionConstant = 273.17
-        if (tempScale == 'k') {
+        let tempScaler = ProxyState.weather.tempScale
+        if (tempScaler == 'k') {
             ProxyState.weather.temp -= celsiusConversionConstant
             ProxyState.weather.feelsLike -= celsiusConversionConstant
             ProxyState.weather.tempScale = "c"
             ProxyState.weather = ProxyState.weather
-        } else if (tempScale == 'c') {
+        } else if (tempScaler == 'c') {
             ProxyState.weather.temp = fahrenheitConversion(ProxyState.weather.temp)
             ProxyState.weather.feelLike = fahrenheitConversion(ProxyState.weather.feelsLike)
             ProxyState.weather.tempScale = "f"
             ProxyState.weather = ProxyState.weather
-        } else if (tempScale == 'f') {
+        } else if (tempScaler == 'f') {
             ProxyState.weather.temp = celsiusConversion(ProxyState.weather.temp)
             ProxyState.weather.feelLike = celsiusConversion(ProxyState.weather.feelsLike)
             ProxyState.weather.tempScale = "c"
@@ -35,11 +36,11 @@ class WeatherService {
     async getUpdatedWeather() {
         // @ts-ignore
         let res = await axios.get(url + "/weather")
-        console.log(res.data)
+        //console.log(res.data)
         // @ts-ignore
         ProxyState.weather = new Weather(res.data)
         ProxyState.weather = ProxyState.weather
-        console.log("Service: Updated get weather", res.data.main)
+        console.log("Service: Updated get weather", ProxyState.weather)
     }
 
 }

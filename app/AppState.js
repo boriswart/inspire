@@ -14,8 +14,8 @@ class AppState extends EventEmitter {
   quote = null
   //new Quote("Everything is beautifull ... In its on way", "The Association", "Music ASCAP")
 
-  times = new Date()
 
+  /** @type {Weather[]} */
   weather = null
 
   /** @type string*/
@@ -23,11 +23,13 @@ class AppState extends EventEmitter {
 
   //Todos ... imported Lists and Tasks from task-manager
 
+  /** @type {Task[]} */
   tasks = []
 
   /** @type {List[]} */
   lists = [new List("Todo", "#656565")]
 
+  times = new Date()
 
 
 }

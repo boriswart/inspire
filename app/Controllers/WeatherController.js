@@ -25,6 +25,7 @@ export default class WeatherController {
     }
 
     toggleTemp() {
-        weatherService.toggleTemp(ProxyState.weather.tempScale)
+        console.log("Got to toggleTemp")
+        weatherService.toggleTemp()
     }
 }
