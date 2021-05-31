@@ -1,6 +1,6 @@
 import { ProxyState } from "../AppState.js"
 import { listsService } from "../Services/ListsService.js"
-import { loadState } from "../Utils/LocalStorage.js"
+//import { loadState } from "../Utils/LocalStorage.js"
 
 //Private
 
@@ -8,12 +8,12 @@ import { loadState } from "../Utils/LocalStorage.js"
 
 
 //public
-export class ListsController {
+export default class ListsController {
     constructor() {
         ProxyState.on("lists", this.drawLists)
         ProxyState.on('tasks', this.drawLists)
         this.drawLists()
-        loadState()
+        //loadState()
     }
 
     addList(event) {
@@ -42,37 +42,38 @@ export class ListsController {
 
         let template = ''
         ProxyState.lists.forEach(i => {
+            console.log("List Draw", i.listId)
             filteredTasks = ProxyState.tasks.filter(x => x.listId == i.listId)
             numTasks = filteredTasks.length
             completedTasks = filteredTasks.filter(x => x.done == true).length
             template += /*html*/`
-            <div class="card col-4 mt-4 text-center">
-            <div class="card-header bg-light' ">
-            <p style="color:${i.color};font-size:24px;">${i.name}</p>
-            <p style="color:${i.color};font-size:14px;">${completedTasks}/${numTasks} </p>
-            </div>
-               <div class="card-body text-center text-color-#9d2525">
-                    <p class="card-text "></p>
+            <div class="col mt-4 text-center align-content-center">
+               <div class=" my-1 rounded">
+                 <p style="font-size:24px;">Todo:</p>
+                 <p style="font-size:14px;">${completedTasks}/${numTasks} </p>
+               </div>
+               <div class="col text-center">
+                    <p></p>
                     <div>
                     `
             ProxyState.tasks.forEach(t => {
                 template += /*html*/`
-                        ${t.listId == i.listId ? '<div class="d-flex flex-wrap sb align-items-center justify-content-around">' : ""}
-                        ${t.listId == i.listId ? '<input type="checkbox" class="checkbox" id="donechk" autocomplete="off" onclick="app.TasksController.updateTask(' : ""}
+                        ${t.listId == i.listId ? '<div class="d-flex flex-wrap sb align-content-center justify-content-around">' : ""}
+                        ${t.listId == i.listId ? '<input type="checkbox" class="checkbox" id="donechk" autocomplete="off" onclick="app.tasksController.updateTask(' : ""}
                         ${t.listId == i.listId ? "'" + t.taskId + "','" + t.done + "'" + ')"' : ""}
                         ${t.listId != i.listId ? "" : t.done ? 'checked >' : '>'}
                         ${t.listId == i.listId ? '<label class="checkbox" for="donechk"></label>' : ""}
-                        ${t.listId == i.listId ? '<p style="color:' + i.color + ';font-size:12px;">' + t.name + '"</p>' : ""}
-                        ${t.listId == i.listId ? '<i class="fa fa-trash" aria-hidden="true" onclick="app.TasksController.removeTask(' : ""}
+                        ${t.listId == i.listId ? '<p style="font-size:22px;">' + t.name + '"</p>' : ""}
+                        ${t.listId == i.listId ? '<i class="fa fa-trash" aria-hidden="true" onclick="app.tasksController.removeTask(' : ""}
                         ${t.listId == i.listId ? "'" + t.taskId + "'" + ')"></i></div>' : ""}`
             })
 
             template += /*html*/`
                     </div>
-                    <div class="d-flex sb" >
-                        <form onsubmit="app.TasksController.addTask(event,'${i.listId}')">
+                    <div class="col d-flex" >
+                        <form onsubmit="app.tasksController.addTask(event,'${i.listId}')">
                             <div class="d-flex align-content-center justify-content-around">    
-                                <div><input type="text" class="no-outline"  minlength="3" maxlength="50" size="10" id="newtask${i.listId}" name="name" required/>
+                                <div><input type="text" class="no-outline"  minlength="3" maxlength="50" size="20" id="newtask${i.listId}" name="name" required/>
                                 <label class="text " for="newtask"></label></div>
                                 <div><button type="submit" class="btn btn-primary">+</button></div>
                                 <div><span><i class="fa fa-trash" aria-hidden="true" onclick="app.ListsController.removeList('${i.listId}')"></i></span></div>
@@ -83,7 +84,7 @@ export class ListsController {
             </div >
              `
         })
-        document.getElementById("cards-go-here").innerHTML = template
+        document.getElementById("todos-app").innerHTML = template
     }
 
 

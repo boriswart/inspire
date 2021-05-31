@@ -1,5 +1,7 @@
 import Quote from "./Models/Quote.js"
 import Weather from "./Models/Weather.js"
+import { List } from "./Models/List.js"
+import { Task } from "./Models/Task.js"
 
 
 import { EventEmitter } from "./Utils/EventEmitter.js"
@@ -18,6 +20,16 @@ class AppState extends EventEmitter {
 
   /** @type string*/
   background = "http://webneel.com/wallpaper/sites/default/files/images/08-2013/23-3d-beach-sand-wallpaper.jpg"
+
+  //Todos ... imported Lists and Tasks from task-manager
+
+  tasks = []
+
+  /** @type {List[]} */
+  lists = [new List("Todo", "#656565")]
+
+
+
 }
 
 export const ProxyState = new Proxy(new AppState(), {

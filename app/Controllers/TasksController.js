@@ -1,7 +1,7 @@
 import { ProxyState } from "../AppState.js";
 import { Task } from "../Models/Task.js";
 import { tasksService } from "../Services/TasksService.js";
-import { loadState } from "../Utils/LocalStorage.js";
+//import { loadState } from "../Utils/LocalStorage.js";
 
 //Private
 
@@ -12,11 +12,11 @@ import { loadState } from "../Utils/LocalStorage.js";
 
 
 //Public
-export class TasksController {
+export default class TasksController {
     constructor() {
         ProxyState.on("tasks", this.drawTasks)
         this.drawTasks()
-        loadState()
+        //loadState()
     }
 
     addTask(event, listId) {
