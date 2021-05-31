@@ -17,7 +17,6 @@ class WeatherService {
         // @ts-ignore
         let res = await axios.get(url + "/weather")
         //console.log(res.data)
-        // @ts-ignore
         ProxyState.weather = new Weather(res.data)
         ProxyState.weather = ProxyState.weather
         console.log("Service: Updated get weather", ProxyState.weather)
@@ -26,19 +25,22 @@ class WeatherService {
     toggleTemp() {
         const celsiusConversionConstant = 273.17
         let tempScaler = ProxyState.weather.tempScale
+        let temperature = 0
         if (tempScaler == 'k') {
-            ProxyState.weather.temp -= celsiusConversionConstant
-            ProxyState.weather.feelsLike -= celsiusConversionConstant
+            temperature = ProxyState.weather.temp - celsiusConversionConstant
+            ProxyState.weather.temp = temperature.toFixed(2)
+            temperature = ProxyState.weather.feelsLike - celsiusConversionConstant
+            ProxyState.weather.feelsLike = temperature.toFixed(2)
             ProxyState.weather.tempScale = "c"
             ProxyState.weather = ProxyState.weather
         } else if (tempScaler == 'c') {
-            ProxyState.weather.temp = fahrenheitConversion(ProxyState.weather.temp)
-            ProxyState.weather.feelsLike = fahrenheitConversion(ProxyState.weather.feelsLike)
+            ProxyState.weather.temp = fahrenheitConversion(ProxyState.weather.temp).toFixed(2)
+            ProxyState.weather.feelsLike = fahrenheitConversion(ProxyState.weather.feelsLike).toFixed(2)
             ProxyState.weather.tempScale = "f"
             ProxyState.weather = ProxyState.weather
         } else if (tempScaler == 'f') {
-            ProxyState.weather.temp = celsiusConversion(ProxyState.weather.temp)
-            ProxyState.weather.feelsLike = celsiusConversion(ProxyState.weather.feelsLike)
+            ProxyState.weather.temp = celsiusConversion(ProxyState.weather.temp).toFixed(2)
+            ProxyState.weather.feelsLike = celsiusConversion(ProxyState.weather.feelsLike).toFixed(2)
             ProxyState.weather.tempScale = "c"
             ProxyState.weather = ProxyState.weather
         }

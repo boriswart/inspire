@@ -12,7 +12,7 @@ class AppState extends EventEmitter {
   /** @type {Quote[]} */
   // @ts-ignore
   quote = null
-  //new Quote("Everything is beautifull ... In its on way", "The Association", "Music ASCAP")
+  //new Quote("Everything is beautiful ... In its on way", "The Association", "Music ASCAP")
 
 
   /** @type {Weather} */

@@ -13,8 +13,8 @@ export default class Weather {
             <div class="myDIV col-lg-4 offset-8 text-over-image p-3">
                 <h5><div>Condition:  ${this.main}</div></h5>
                 <h5><div>${this.description}</div></h5>
-                <h5><span class="" onclick="app.weatherController.toggleTemp()">Temp: ${this.temp}</span></h5>
-                <h5><div>Feels like: ${this.feelsLike}</div></h5>
+                <h5><span class="" onclick="app.weatherController.toggleTemp()">Temp: ${this.temp} ${this.tempScale}</span></h5>
+                <h5><div>Feels like: ${this.feelsLike} ${this.tempScale}</div></h5>
             </div>
         `
     }

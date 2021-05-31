@@ -1,5 +1,5 @@
 import { ProxyState } from "../AppState.js"
-import  Weather  from "../Models/Weather.js"
+import Weather from "../Models/Weather.js"
 import { weatherService } from "../Services/WeatherService.js"
 
 
@@ -16,7 +16,7 @@ export default class WeatherController {
     constructor() {
         ProxyState.on("weather", _draw);
         this.getUpdatedWeather()
-        this.toggleTemp()
+        //this.toggleTemp()
     }
 
     getUpdatedWeather() {
