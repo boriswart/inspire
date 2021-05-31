@@ -14,11 +14,11 @@ function _draw() {
 
 
     timeElem.innerHTML = /*html*/`
-  <div id="time-app" class="col-12 T-dark my-5 rounded">
+  <div id="time-app" class="col-12 T-dark my-1 rounded">
   <h2>Time: </h2>
   <p > ${d} </p>
-  <span style='font-size: xx-large; text-center'>
-  ${h + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s) + strAMPM}</span>
+  <span style='font-size: xxx-large; text-center'>
+  ${h + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s) + " " + strAMPM}</span>
   <H1> </H1>
   </div>
 `
