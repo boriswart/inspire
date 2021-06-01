@@ -9,8 +9,8 @@ function _draw() {
     let s = d.getSeconds()
     let strAMPM = "AM"
 
-    h > 12 ? h -= 12 : ""
     h > 12 ? strAMPM = "PM" : strAMPM = "AM"
+    h > 12 ? h -= 12 : ""
 
 
     timeElem.innerHTML = /*html*/`
