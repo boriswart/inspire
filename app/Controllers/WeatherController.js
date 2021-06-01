@@ -4,7 +4,7 @@ import { weatherService } from "../Services/WeatherService.js"
 
 
 function _draw() {
-    console.log("Drawing Weather", ProxyState.weather)
+    //console.log("Drawing Weather", ProxyState.weather)
     let weatherElem = document.getElementById("weather-app")
     if (ProxyState.weather) {
         weatherElem.innerHTML = ProxyState.weather.weatherTemplate
@@ -24,7 +24,7 @@ export default class WeatherController {
     }
 
     toggleTemp() {
-        console.log("Got to toggleTemp")
+        //console.log("Got to toggleTemp")
         weatherService.toggleTemp()
     }
 }

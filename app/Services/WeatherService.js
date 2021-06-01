@@ -19,7 +19,7 @@ class WeatherService {
         //console.log(res.data)
         ProxyState.weather = new Weather(res.data)
         ProxyState.weather = ProxyState.weather
-        console.log("Service: Updated get weather", ProxyState.weather)
+        //console.log("Service: Updated get weather", ProxyState.weather)
     }
 
     toggleTemp() {

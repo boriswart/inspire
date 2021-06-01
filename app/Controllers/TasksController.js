@@ -16,7 +16,11 @@ export default class TasksController {
     constructor() {
         ProxyState.on("tasks", this.drawTasks)
         this.drawTasks()
-        //loadState()
+        this.getTasks()
+        //loadState() TODO should get replaced by above
+    }
+    getTasks() {
+        tasksService.getTasks()
     }
 
     addTask(event, listId) {

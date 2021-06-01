@@ -39,7 +39,6 @@ export default class ListsController {
         let filteredTasks
         let numTasks = 0
         let completedTasks = 0
-
         let template = ''
         ProxyState.lists.forEach(i => {
             console.log("List Draw", i.listId)
@@ -63,7 +62,7 @@ export default class ListsController {
                         ${t.user == i.listId ? "'" + t.id + "','" + t.completed + "'" + ')"' : ""}
                         ${t.user != i.listId ? "" : t.completed ? 'checked >' : '>'}
                         ${t.user == i.listId ? '<label class="checkbox" for="donechk"></label></div>' : ""}
-                        ${t.user == i.listId ? '<div><p style="font-size:20px;">' + t.type + '</p></div>' : ""}
+                        ${t.user == i.listId ? '<div><p style="font-size:20px;">' + t.description + '</p></div>' : ""}
                         ${t.user == i.listId ? '<div><i class="fa fa-trash" aria-hidden="true" onclick="app.tasksController.removeTask(' : ""}
                         ${t.user == i.listId ? "'" + t.id + "'" + ')"></i></div></div>' : ""}`
             })

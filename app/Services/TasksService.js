@@ -8,42 +8,59 @@ let url = "https://bcw-sandbox.herokuapp.com/api"
 
 
 class TasksService {
+
+
+    async getTasks() {
+        // @ts-ignore
+        let newT = null
+        // @ts-ignore
+        let res = await axios.get(url + '/william/todos')
+        res.data.forEach(t => {
+            newT = new Task(t.description, t.completed, t.user, t._id)
+            ProxyState.tasks = [...ProxyState.tasks, newT]
+        })
+    }
+
     constructor() {
         // ProxyState.on('tasks', saveState)
     }
 
-    createTask(name, listId) {
-        console.log("Service: Adding a Task", name, listId)
-        let newTask = new Task(name, false, listId)
-        ProxyState.tasks.push(newTask)
-        ProxyState.tasks = ProxyState.tasks
+
+
+    async createTask(desc, listId) {
+        // @ts-ignore
+        let newTask = new Task(desc, false, listId)
+        // @ts-ignore
+        let res = await axios.post(url + '/william/todos', newTask)
+        console.log(res.data)
+        newTask = new Task(res.data.description, res.data.completed, res.data.user, res.data._id)
+        ProxyState.tasks = [...ProxyState.tasks, newTask]
+        console.log("Create: ", ProxyState.tasks)
     }
 
-    deleteTask(taskId) {
+    async deleteTask(taskId) {
+        // @ts-ignore
+        let res = await axios.delete(url + '/william/todos/' + taskId)
+        console.log(res.data)
         let keeperTasks = ProxyState.tasks.filter(x => x.id !== taskId)
         ProxyState.tasks = keeperTasks
         ProxyState.lists = ProxyState.lists
     }
 
-    updateTask(taskId, doneChk) {
+    async updateTask(taskId, doneChk) {
+        //console.log("Post updated todos new-way", taskId)
         let foundTask = ProxyState.tasks.find(x => x.id == taskId)
-        console.log("Updating the Tasks old-way", taskId, doneChk, ProxyState.tasks)
+
         foundTask.completed ? foundTask.completed = false : foundTask.completed = true //toggle every click
-        console.log("Updated  Tasks - old-way", foundTask)
-        ProxyState.tasks = ProxyState.tasks
+        // @ts-ignore
+        let res = await axios.post(url + '/william/todos', foundTask)
+
+        let keeperTasks = ProxyState.tasks.filter(x => x.id != taskId)
+        foundTask = new Task(res.data.description, res.data.completed, res.data.user, res.data._id)
+        ProxyState.tasks = [...keeperTasks, foundTask]
+        console.log("Update: ", ProxyState.tasks)
+        this.deleteTask(taskId)
     }
-
-    // TODO sandbox task to update sandbox
-
-    async updateTasks(taskId, doneChk) {
-        //let res = await axios.post(url + "/william/todos")
-        console.log("Post todos new-way")
-        //ProxyState.tasks.push( new Task(res.data))
-        //console.log("Service: Updated tasks", ProxyState.tasks)
-    }
-
-
-
 
 }
 export const tasksService = new TasksService()
