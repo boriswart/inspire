@@ -53,13 +53,13 @@ class TasksService {
 
         foundTask.completed ? foundTask.completed = false : foundTask.completed = true //toggle every click
         // @ts-ignore
-        let res = await axios.post(url + '/william/todos', foundTask)
+        let res = await axios.putt(url + '/william/todos', foundTask)
 
         let keeperTasks = ProxyState.tasks.filter(x => x.id != taskId)
         foundTask = new Task(res.data.description, res.data.completed, res.data.user, res.data._id)
         ProxyState.tasks = [...keeperTasks, foundTask]
         console.log("Update: ", ProxyState.tasks)
-        this.deleteTask(taskId)
+        //this.deleteTask(taskId)
     }
 
 }
